@@ -1,0 +1,195 @@
+/* 🔥 Additional Premium Components & Utilities */
+/* Append to your existing src/index.css */
+
+/* Counter/Button Styles */
+@layer components {
+  .counter {
+    @apply font-mono text-lg px-6 py-3 rounded-2xl font-semibold transition-all duration-300 border-2 border-transparent hover:border-emerald-500/50 active:scale-95 mb-6;
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--accent-emerald);
+    backdrop-filter: blur(10px);
+    
+    &:hover {
+      background: rgba(16, 185, 129, 0.2);
+      box-shadow: var(--shadow-md);
+    }
+    
+    &:focus-visible {
+      @apply ring-4 ring-emerald-500/30 outline-none;
+    }
+  }
+}
+
+/* Hero Section Utilities (for landing/marketing pages) */
+.hero {
+  @apply relative isolate overflow-hidden;
+  
+  .base, .framework, .vite {
+    @apply mx-auto;
+  }
+  
+  .base {
+    @apply w-[170px] relative z-0;
+  }
+  
+  .framework, .vite {
+    @apply absolute;
+  }
+  
+  .framework {
+    z-index: 1;
+    top: 34px;
+    height: 28px;
+    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg) scale(1.4);
+  }
+  
+  .vite {
+    z-index: 0;
+    top: 107px;
+    height: 26px;
+    width: auto;
+    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg) scale(0.8);
+  }
+}
+
+/* 🔥 Center Content Layout */
+#center {
+  @apply flex flex-col gap-6 lg:gap-10 items-center justify-center flex-grow p-8 lg:p-12 xl:p-16;
+  
+  @media (max-width: 1024px) {
+    @apply px-5 py-8 gap-5;
+  }
+}
+
+/* 🔥 Next Steps / Feature Cards */
+#next-steps {
+  @apply flex border-t border-slate-800/50 bg-slate-900/50 backdrop-blur-xl rounded-3xl mt-12 lg:mt-20;
+  
+  > div {
+    @apply flex-1 p-8 lg:p-12 xl:p-16;
+    
+    @media (max-width: 1024px) {
+      @apply p-6 lg:p-8 text-center;
+    }
+  }
+  
+  .icon {
+    @apply w-6 h-6 lg:w-7 lg:h-7 mb-4;
+  }
+  
+  @media (max-width: 1024px) {
+    @apply flex-col text-center;
+  }
+}
+
+#docs {
+  @apply border-r border-slate-800/50;
+  
+  @media (max-width: 1024px) {
+    border-right: none;
+    border-bottom: 1px solid rgba(51, 65, 85, 0.5);
+  }
+}
+
+/* 🔥 Social/Logos Grid */
+#next-steps ul {
+  @apply list-none p-0 flex gap-3 lg:gap-4 mt-8 lg:mt-12;
+  
+  .logo {
+    @apply h-5 lg:h-6;
+  }
+  
+  a {
+    color: var(--text-primary);
+    @apply text-base lg:text-lg font-semibold rounded-2xl bg-slate-800/50 backdrop-blur-sm flex items-center gap-3 px-6 lg:px-8 py-3 lg:py-4 no-underline border border-slate-700/50 hover:border-emerald-500/50 transition-all duration-300 shadow-lg hover:shadow-xl;
+    
+    .button-icon {
+      @apply h-5 w-5 lg:h-6 lg:w-6;
+    }
+  }
+  
+  @media (max-width: 1024px) {
+    @apply mt-5 flex-wrap justify-center;
+    
+    li {
+      flex: 1 1 calc(50% - 12px);
+    }
+    
+    a {
+      @apply w-full justify-center box-content;
+    }
+  }
+}
+
+/* 🔥 Spacer */
+#spacer {
+  @apply h-24 lg:h-32 border-t border-slate-800/50;
+  
+  @media (max-width: 1024px) {
+    @apply h-12;
+  }
+}
+
+/* 🔥 Timeline/Ticks Component */
+.ticks {
+  @apply relative w-full py-8;
+  
+  &::before,
+  &::after {
+    content: '';
+    @apply absolute -top-2;
+    border: 6px solid transparent;
+  }
+  
+  &::before {
+    left: 0;
+    border-left-color: var(--border-primary);
+  }
+  
+  &::after {
+    right: 0;
+    border-right-color: var(--border-primary);
+  }
+}
+
+/* 🔥 Tailwind Component Overrides */
+@layer components {
+  /* Enhanced Glass Cards */
+  .glass-card {
+    @apply glass rounded-3xl p-8 lg:p-12 xl:p-16 border border-slate-700/50 hover:border-emerald-500/50 hover:shadow-2xl hover:shadow-emerald-500/20 hover:-translate-y-2 transition-all duration-500 group;
+  }
+  
+  /* Premium Modal */
+  .modal {
+    @apply fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center z-50 p-6;
+  }
+  
+  .modal-content {
+    @apply bg-slate-900/95 backdrop-blur-2xl border border-slate-700/50 rounded-3xl max-w-2xl w-full mx-4 lg:mx-8 p-8 lg:p-12 xl:p-16 shadow-2xl shadow-black/50 animate-in slide-in-from-bottom-4 duration-300 max-h-[90vh] overflow-y-auto;
+  }
+}
+
+/* 🔥 Responsive Animations */
+@keyframes slide-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-in-up {
+  animation: slide-in-up 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 🔥 Ultra-wide Desktop Support */
+@media (min-width: 1920px) {
+  #root {
+    max-width: 100%;
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+}

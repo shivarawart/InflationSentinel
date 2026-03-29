@@ -1,0 +1,138 @@
+@import "tailwindcss";
+
+/* ================= ROOT THEME ================= */
+:root {
+  --bg-gradient: linear-gradient(135deg, #0f111a 0%, #1e1b2f 50%, #0f111a 100%);
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --accent: #10b981;
+}
+
+/* ================= APP ROOT ================= */
+#root {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: var(--bg-gradient);
+  color: var(--text-primary);
+  font-family: 'Inter', system-ui, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ================= BASE ================= */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    color: var(--text-primary);
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(15, 23, 42, 0.4);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(16, 185, 129, 0.5);
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(16, 185, 129, 0.7);
+  }
+
+  /* Selection */
+  ::selection {
+    background: rgba(16, 185, 129, 0.3);
+    color: #ecfdf5;
+  }
+}
+
+/* ================= COMPONENTS ================= */
+@layer components {
+
+  /* Glass Effect */
+  .glass {
+    @apply bg-slate-800/40 backdrop-blur-xl border border-slate-700/50 rounded-2xl;
+  }
+
+  /* Buttons */
+  .btn-primary {
+    @apply bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-6 py-3 rounded-xl transition duration-300 shadow-lg;
+  }
+
+  .btn-secondary {
+    @apply bg-slate-800 hover:bg-slate-700 text-white px-5 py-2 rounded-xl transition;
+  }
+
+  /* Cards */
+  .card {
+    @apply bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-2xl p-6 shadow-xl;
+  }
+
+  /* Input */
+  .input {
+    @apply w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500;
+  }
+
+}
+
+/* ================= UTILITIES ================= */
+@layer utilities {
+
+  .text-hero {
+    @apply text-4xl md:text-6xl lg:text-8xl font-black bg-gradient-to-r from-white to-emerald-300 bg-clip-text text-transparent;
+  }
+
+  .glow {
+    box-shadow: 0 0 40px rgba(16, 185, 129, 0.3);
+  }
+
+  .full-bleed {
+    @apply w-full;
+  }
+
+}
+
+/* ================= CUSTOM ================= */
+
+/* Map background */
+.map-container {
+  background: linear-gradient(135deg, #0f111a, #1a1b2e);
+}
+
+/* ================= ANIMATIONS ================= */
+
+/* Slow spin */
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 3s linear infinite;
+}
+
+/* Smooth pulse */
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 2s ease-in-out infinite;
+}
